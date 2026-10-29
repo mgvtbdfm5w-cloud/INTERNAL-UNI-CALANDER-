@@ -20,7 +20,7 @@ const GOVUK_QUERIES = [
   "student support regulations", "disabled students allowance", "postgraduate loan", "fee status", "franchised provision"
 ];
 const SKIP_DOC_TYPES = new Set(["transparency", "form", "foi_release", "official_statistics_announcement", "national_statistics_announcement",
-  "statistics_announcement", "document_collection", "corporate_report", "procurement", "organisation", "person", "ministerial_role", "service_manual_guide", "html_publication"]);
+  "statistics_announcement", "official_statistics", "national_statistics", "document_collection", "corporate_report", "procurement", "organisation", "person", "ministerial_role", "service_manual_guide", "html_publication"]);
 const LEGISLATION_FEEDS = [
   "https://www.legislation.gov.uk/all/data.feed?title=student&sort=published",
   "https://www.legislation.gov.uk/all/data.feed?title=higher%20education&sort=published",
@@ -42,11 +42,13 @@ const EXCLUDE_TERMS = [/international students?/i, /student visas?/i, /graduate 
   /international student levy/i, /sponsor licen[cs]e/i, /\bCAS\b/, /student route/i, /dependants? visa/i];
 const SCHOOL_ONLY = [/\bschools?\b/i, /\bacadem(y|ies)\b/i, /\bpupils?\b/i, /early years/i, /\bnurser(y|ies)\b/i, /\bGCSEs?\b/i, /16 to 18/i, /\bSEND\b/,
   /\bOfsted\b/i, /childcare/i, /breakfast club/i, /\bT levels?\b/i, /school food/i, /high needs/i, /teacher (pay|training)/i, /apprenticeship levy/i];
+const FE_ONLY = [/residential bursary/i, /residential support scheme/i, /adult education/i, /adult skills/i, /\b16 to 19\b/i, /agricultur/i, /skills bootcamps?/i];
 const LOW_VALUE = [/^correction slip$/i, /\bcensus\b/i, /workforce management information/i, /net capacity/i, /\blogin details\b/i, /refund requests/i];
 
 function classify(title, text) {
   const all = title + " \n " + (text || "");
   if (LOW_VALUE.some(r => r.test(title.trim()))) return null;
+  if (FE_ONLY.some(r => r.test(title))) return null; // further-education and 16-19 schemes, not HE
   const he = HE_TERMS.filter(r => r.test(all)).length;
   const res = RESIDENCY_TERMS.some(r => r.test(all));
   if (!he && !res) return null;
@@ -62,10 +64,16 @@ function classify(title, text) {
 }
 
 // ---------- fetching ----------
+const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 async function getText(url) {
-  const r = await fetch(url, { headers: { "User-Agent": UA, Accept: "application/json, application/atom+xml, text/xml;q=0.9, */*;q=0.5" }, signal: AbortSignal.timeout(20000) });
-  if (!r.ok) throw new Error(url + " → " + r.status);
-  return r.text();
+  for (let attempt = 1; ; attempt++) {
+    const r = await fetch(url, { headers: { "User-Agent": UA, Accept: "application/json, application/atom+xml, text/xml;q=0.9, */*;q=0.5" }, signal: AbortSignal.timeout(20000) });
+    if (r.ok) return r.text();
+    // GOV.UK answers 503/429 when asked too quickly: wait and try again
+    if ((r.status === 503 || r.status === 429 || r.status === 502) && attempt < 3) { await sleep(4000 * attempt); continue; }
+    const host = new URL(url).hostname, q = new URL(url).searchParams.get("q") || new URL(url).searchParams.get("title") || "";
+    throw new Error(`${host}${q ? ` ("${q}")` : ""} answered ${r.status}`);
+  }
 }
 function govukUrl(q) {
   const u = new URL("https://www.gov.uk/api/search.json");
@@ -114,6 +122,7 @@ function createNews(dataDir) {
       const found = [];
       for (const job of jobs) { // one at a time, to be polite to the sources
         try { found.push(...await job()); } catch (e) { errors.push(String(e.message || e)); }
+        await sleep(1500);
       }
       const cutoff = new Date(Date.now() - MAX_AGE_DAYS * 864e5).toISOString().slice(0, 10);
       let added = 0;
@@ -150,7 +159,8 @@ function createNews(dataDir) {
   function list(admin) {
     const items = Object.values(store.items).filter(i => !i.deleted && (admin || i.status === "approved"))
       .sort((a, b) => (b.date || "").localeCompare(a.date || "") || b.score - a.score);
-    return { lastScan: store.lastScan, lastResult: admin ? store.lastResult : undefined, scanning: !!scanning, items };
+    if (!admin) return { items: items.map(({ id, title, summary, url, date, source, category, nation, residency }) => ({ id, title, summary, url, date, source, category, nation, residency, status: "approved" })) };
+    return { lastScan: store.lastScan, lastResult: store.lastResult, scanning: !!scanning, items };
   }
   async function update(id, patch) {
     const it = store.items[id]; if (!it) return null;

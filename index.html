@@ -402,7 +402,7 @@ details.opts[open] summary { margin-bottom: 10px }
   <section class="news" id="newsBox" aria-labelledby="newsTitle">
     <div class="news-head">
       <div><div class="eyebrow">Home students · UK higher education</div><h2 id="newsTitle">Industry news</h2>
-        <p>New policies, laws and funding that affect students eligible for UK student finance. Found daily from official sources and checked by Platinum before it appears here.</p></div>
+        <p>The latest policy, law and funding changes affecting students eligible for UK student finance, checked by Platinum.</p></div>
       <div class="nchips" id="newsChips" role="group" aria-label="Filter news">
         <button type="button" class="nchip" data-cat="" aria-pressed="true">All</button><button type="button" class="nchip" data-cat="Funding" aria-pressed="false">Funding</button><button type="button" class="nchip" data-cat="Law" aria-pressed="false">Law</button><button type="button" class="nchip" data-cat="Policy" aria-pressed="false">Policy</button>
       </div>
@@ -1100,9 +1100,9 @@ details.opts[open] summary { margin-bottom: 10px }
     $("#newsList").innerHTML = shown.length ? shown.map(n => `<article class="nitem"><div class="nd">${n.date ? fmtDate(n.date) : ""}</div><div class="nb">
         <a class="nt" href="${esc(safeUrl(n.url))}" target="_blank" rel="noopener">${esc(n.title)}</a>
         ${n.summary ? `<div class="ns">${esc(n.summary)}</div>` : ""}<div class="nmeta">${newsMeta(n)}</div></div></article>`).join("")
-      : `<p class="empty">${news.cat ? "No " + esc(news.cat.toLowerCase()) + " news published yet." : "No news published yet. New items appear here once Platinum has checked them."}</p>`;
+      : `<p class="empty">${news.cat ? "No " + esc(news.cat.toLowerCase()) + " updates yet." : "No updates yet. Check back soon."}</p>`;
     const more = $("#newsMore"); more.hidden = pub.length <= 6; more.textContent = news.showAll ? "Show fewer" : `Show all ${pub.length}`;
-    $("#newsStamp").textContent = "Sources: GOV.UK (DfE, Student Loans Company, HM Treasury) and legislation.gov.uk · last checked " + fmtWhen(news.lastScan);
+    $("#newsStamp").textContent = pub.length ? "Each headline opens the official source." : "";
   }
   $("#newsChips").addEventListener("click", e => { const b = e.target.closest("[data-cat]"); if (!b) return; news.cat = b.dataset.cat;
     document.querySelectorAll("#newsChips .nchip").forEach(x => x.setAttribute("aria-pressed", String(x === b))); renderNews(); });
