@@ -1,0 +1,510 @@
+{
+  "meta": {
+    "cycle": "",
+    "intakes": [
+      {
+        "id": "i4",
+        "label": "",
+        "name": "November intake"
+      },
+      {
+        "id": "i1",
+        "label": "January – March",
+        "name": "Intake 1"
+      },
+      {
+        "id": "i2",
+        "label": "April – June",
+        "name": "Intake 2"
+      },
+      {
+        "id": "i3",
+        "label": "July – December",
+        "name": "Intake 3"
+      }
+    ],
+    "updated": "2026-10-29"
+  },
+  "partners": {
+    "aru-pibo": {
+      "badge": "",
+      "intakeDeadlines": {
+        "i1": {
+          "deadline": "2027-01-25"
+        },
+        "i2": {
+          "deadline": null
+        },
+        "i3": {
+          "deadline": null
+        },
+        "i4": {
+          "deadline": null
+        }
+      },
+      "logo": "c1b34050962558bebd4e87347e68fb71",
+      "logoBg": "#051e47",
+      "name": "ARU",
+      "order": 20
+    },
+    "bloomsbury": {
+      "badge": "BI",
+      "intakeDeadlines": {
+        "i1": {
+          "deadline": null
+        },
+        "i2": {
+          "deadline": null
+        },
+        "i3": {
+          "deadline": null
+        }
+      },
+      "logo": "b42f626b3f4cab4012b236641a671d28",
+      "logoBg": "#ec6607",
+      "name": "Bloomsbury Institute",
+      "order": 9
+    },
+    "bpp-jvem": {
+      "badge": "",
+      "intakeDeadlines": {
+        "i1": {
+          "deadline": "2027-01-04"
+        },
+        "i2": {
+          "deadline": null
+        },
+        "i3": {
+          "deadline": null
+        },
+        "i4": {
+          "deadline": null
+        }
+      },
+      "logo": "996ddb44277a04b47131d22b535cca91",
+      "name": "BPP",
+      "order": 17
+    },
+    "cecos": {
+      "badge": "CE",
+      "campusList": [
+        "London – North",
+        "London – East",
+        "Birmingham – Edgbaston",
+        "Bradford",
+        "Birmingham – Digbeth",
+        "Leicester"
+      ],
+      "city": "London – North · London – East · Birmingham – Edgbaston · Bradford · Birmingham – Digbeth · Leicester",
+      "intakeDeadlines": {
+        "i1": {
+          "deadline": null
+        },
+        "i2": {
+          "deadline": null
+        },
+        "i3": {
+          "deadline": null
+        },
+        "i4": {
+          "deadline": null
+        }
+      },
+      "logo": "5c5097c2a23b8eef520831fe531330aa",
+      "name": "CECOS",
+      "order": 0
+    },
+    "davidgame": {
+      "badge": "DG",
+      "intakeDeadlines": {
+        "i1": {
+          "deadline": null
+        },
+        "i2": {
+          "deadline": null
+        },
+        "i3": {
+          "deadline": null
+        }
+      },
+      "logo": "2ddbc3c40d06600eed4cb34eba6abe79",
+      "name": "David Game",
+      "order": 4
+    },
+    "fsb": {
+      "badge": "FS",
+      "campusList": [
+        "Croydon",
+        "Sheffield",
+        "Leicester",
+        "Birmingham – Digbeth"
+      ],
+      "city": "Croydon · Sheffield · Leicester · Birmingham – Digbeth",
+      "intakeDeadlines": {
+        "i1": {
+          "deadline": null
+        },
+        "i2": {
+          "deadline": null
+        },
+        "i3": {
+          "deadline": null
+        }
+      },
+      "logo": "1de46b1c43175ee9dda78cf361b69a35",
+      "name": "FSB",
+      "order": 5
+    },
+    "gbs": {
+      "badge": "GB",
+      "intakeDeadlines": {
+        "i1": {
+          "deadline": null
+        },
+        "i2": {
+          "deadline": null
+        },
+        "i3": {
+          "deadline": null
+        }
+      },
+      "logo": "0a22c1ebae28c6b963715af30f66ad05",
+      "logoBg": "#1b2955",
+      "name": "GBS (Bath Spa University)",
+      "order": 14
+    },
+    "gis": {
+      "badge": "GI",
+      "campusList": [
+        "Online"
+      ],
+      "city": "Online",
+      "intakeDeadlines": {
+        "i1": {
+          "deadline": null
+        },
+        "i2": {
+          "deadline": null
+        },
+        "i3": {
+          "deadline": null
+        }
+      },
+      "logo": "b0c205d58012c058781569d5e279cc18",
+      "name": "GIS (Global Institute of Sport)",
+      "order": 10
+    },
+    "ibcm-mz9p": {
+      "badge": "",
+      "intakeDeadlines": {
+        "i1": {
+          "deadline": null
+        },
+        "i2": {
+          "deadline": null
+        },
+        "i3": {
+          "deadline": null
+        },
+        "i4": {
+          "deadline": "2026-11-03"
+        }
+      },
+      "logo": "30df787c79fcbe5fc95a4294fb0510cd",
+      "name": "IBCM",
+      "order": 16
+    },
+    "lcca": {
+      "badge": "LC",
+      "intakeDeadlines": {
+        "i1": {
+          "deadline": "2027-01-22"
+        },
+        "i2": {
+          "deadline": null
+        },
+        "i3": {
+          "deadline": null
+        }
+      },
+      "logo": "a46332fc0419090819cc1fbb0366637c",
+      "name": "LCCA",
+      "order": 7
+    },
+    "lsc-ccu-gz3e": {
+      "badge": "",
+      "courses": [],
+      "intakeDeadlines": {
+        "i1": {
+          "deadline": null
+        },
+        "i2": {
+          "deadline": null
+        },
+        "i3": {
+          "deadline": null
+        },
+        "i4": {
+          "deadline": "2026-10-30"
+        }
+      },
+      "logo": "c964aaea7b3d48f9cd04f6339bd450a7",
+      "logoBg": "#ed1b24",
+      "name": "LSC (CCU)",
+      "order": 15
+    },
+    "montrose": {
+      "badge": "MC",
+      "intakeDeadlines": {
+        "i1": {
+          "deadline": "2026-12-04"
+        },
+        "i2": {
+          "deadline": null
+        },
+        "i3": {
+          "deadline": null
+        }
+      },
+      "logo": "1a410589492ad8303788bfa594a1637b",
+      "logoBg": "#1e2b8b",
+      "name": "Montrose College",
+      "order": 3
+    },
+    "pointblank": {
+      "badge": "PB",
+      "intakeDeadlines": {
+        "i1": {
+          "deadline": null
+        },
+        "i2": {
+          "deadline": null
+        },
+        "i3": {
+          "deadline": null
+        }
+      },
+      "logo": "ebbe6c54b23fac2a7d325920f023dda5",
+      "name": "pointblank Music School",
+      "order": 11
+    },
+    "ruskin": {
+      "badge": "RC",
+      "campusList": [
+        "Oxford"
+      ],
+      "city": "Oxford",
+      "intakeDeadlines": {
+        "i1": {
+          "deadline": null
+        },
+        "i2": {
+          "deadline": null
+        },
+        "i3": {
+          "deadline": null
+        }
+      },
+      "logo": "3e2e8c2d8a785baac935e8e41ac32173",
+      "name": "Ruskin College",
+      "order": 6
+    },
+    "sae-a7ft": {
+      "badge": "",
+      "intakeDeadlines": {
+        "i1": {
+          "deadline": null
+        },
+        "i2": {
+          "deadline": null
+        },
+        "i3": {
+          "deadline": null
+        },
+        "i4": {
+          "deadline": null
+        }
+      },
+      "logo": "d272fd6ce1ea2c091d0a83625035ece4",
+      "name": "SAE",
+      "order": 21
+    },
+    "soc": {
+      "badge": "SC",
+      "campusList": [
+        "Birmingham",
+        "Telford"
+      ],
+      "city": "Birmingham · Telford",
+      "intakeDeadlines": {
+        "i1": {
+          "deadline": "2026-12-14",
+          "note": "Deadline subject to change"
+        },
+        "i2": {
+          "deadline": null
+        },
+        "i3": {
+          "deadline": null
+        }
+      },
+      "logo": "94078892384c7cfdcb0a58baba064916",
+      "name": "School of Coding",
+      "order": 12
+    },
+    "ucfb": {
+      "badge": "UC",
+      "campusList": [
+        "Wembley",
+        "Manchester",
+        "Distance"
+      ],
+      "city": "Wembley · Manchester · Distance",
+      "intakeDeadlines": {
+        "i1": {
+          "deadline": null
+        },
+        "i2": {
+          "deadline": null
+        },
+        "i3": {
+          "deadline": null
+        }
+      },
+      "logo": "21efa45a41a1670ed33b350f1645148d",
+      "name": "UCFB",
+      "order": 8
+    },
+    "uclan-31v9": {
+      "badge": "",
+      "intakeDeadlines": {
+        "i1": {
+          "deadline": "2027-02-01"
+        },
+        "i2": {
+          "deadline": null
+        },
+        "i3": {
+          "deadline": null
+        },
+        "i4": {
+          "deadline": null
+        }
+      },
+      "logo": "bc32b945045648d8c1940a409ea11bab",
+      "name": "UCLAN",
+      "order": 19
+    },
+    "ukcbc": {
+      "badge": "UK",
+      "intakeDeadlines": {
+        "i1": {
+          "deadline": null
+        },
+        "i2": {
+          "deadline": null
+        },
+        "i3": {
+          "deadline": null
+        }
+      },
+      "logo": "503faa0a50167075dbff6d6785192e86",
+      "logoBg": "#00b4af",
+      "name": "UKCBC",
+      "order": 1
+    },
+    "ulaw": {
+      "badge": "UL",
+      "campusList": [
+        "Bristol",
+        "Leeds",
+        "Manchester"
+      ],
+      "city": "Bristol · Leeds · Manchester",
+      "intakeDeadlines": {
+        "i1": {
+          "deadline": "2027-01-08"
+        },
+        "i2": {
+          "deadline": null
+        },
+        "i3": {
+          "deadline": null
+        }
+      },
+      "logo": "d2083a33c64922305e293dd8a389684c",
+      "name": "ULAW",
+      "order": 13
+    },
+    "uws-bvcy": {
+      "badge": "",
+      "intakeDeadlines": {
+        "i1": {
+          "deadline": "2027-01-08"
+        },
+        "i2": {
+          "deadline": null
+        },
+        "i3": {
+          "deadline": null
+        },
+        "i4": {
+          "deadline": null
+        }
+      },
+      "logo": "a9d5d8ac161bad23c18931cdb75b765d",
+      "name": "UWS",
+      "order": 22
+    },
+    "vcad-ruyc": {
+      "badge": "",
+      "campusList": [
+        "Manchester",
+        "london"
+      ],
+      "city": "Manchester · london",
+      "intakeDeadlines": {
+        "i1": {
+          "deadline": null
+        },
+        "i2": {
+          "deadline": null
+        },
+        "i3": {
+          "deadline": null
+        },
+        "i4": {
+          "deadline": null
+        }
+      },
+      "logo": "9769715773eb513edb31e796707756dd",
+      "name": "VCAD",
+      "order": 18
+    },
+    "william": {
+      "badge": "WC",
+      "campusList": [
+        "London – Stratford",
+        "Leeds"
+      ],
+      "city": "London – Stratford · Leeds",
+      "intakeDeadlines": {
+        "i1": {
+          "deadline": "2027-01-08"
+        },
+        "i2": {
+          "deadline": null
+        },
+        "i3": {
+          "deadline": null
+        },
+        "i4": {
+          "deadline": null
+        }
+      },
+      "logo": "b90a5d275fe2460c88b367af8da98b32",
+      "name": "William College",
+      "order": 2
+    }
+  }
+}

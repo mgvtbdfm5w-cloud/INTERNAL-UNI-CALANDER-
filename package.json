@@ -1,0 +1,9 @@
+{
+  "name": "platinum-intake-board",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Platinum Education intake board: partner deadlines, closing-soon alerts and a password-protected admin.",
+  "main": "server.js",
+  "scripts": { "start": "node server.js" },
+  "engines": { "node": ">=18" }
+}
