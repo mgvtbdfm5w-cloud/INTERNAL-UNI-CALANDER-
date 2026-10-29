@@ -6,6 +6,7 @@ const fs = require("node:fs");
 const fsp = require("node:fs/promises");
 const path = require("node:path");
 const crypto = require("node:crypto");
+const { createNews } = require("./news");
 
 const PORT = Number(process.env.PORT) || 3000;
 const ROOT = __dirname;
@@ -142,6 +143,7 @@ async function handle(req, res) {
     return send(res, 200, { meta: board.meta, partners });
   }
   if (p === "/api/session" && m === "GET") return send(res, 200, { admin: isAdmin(req), enabled: !!ADMIN_PASSWORD });
+  if (p === "/api/news" && m === "GET") return send(res, 200, news.list(isAdmin(req)));
 
   if (p.startsWith("/_blob/") && (m === "GET" || m === "HEAD")) {
     const id = p.slice(7);
@@ -167,6 +169,11 @@ async function handle(req, res) {
     if (p === "/api/logout" && m === "POST") return send(res, 200, { admin: false }, { "Set-Cookie": "pib_admin=; HttpOnly; SameSite=Strict; Path=/; Max-Age=0" });
 
     if (!isAdmin(req)) return send(res, 401, { error: "not_admin" });
+
+    if (p === "/api/news/scan" && m === "POST") return send(res, 200, await news.scan("manual"));
+    const nm = p.match(/^\/api\/news\/([a-f0-9]{16})$/);
+    if (nm && m === "PUT") { const it = await news.update(nm[1], await readJson(req)); return it ? send(res, 200, it) : send(res, 404, { error: "not_found" }); }
+    if (nm && m === "DELETE") return (await news.remove(nm[1])) ? send(res, 200, { ok: true }) : send(res, 404, { error: "not_found" });
 
     if (p === "/api/meta" && m === "PUT") {
       const body = await readJson(req);
@@ -208,6 +215,8 @@ async function handle(req, res) {
 }
 
 loadBoard();
+const news = createNews(DATA_DIR);
+if (process.env.NEWS_SCAN !== "off") news.start();
 http.createServer((req, res) => {
   handle(req, res).catch(err => {
     const status = err.status || 500;

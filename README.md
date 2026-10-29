@@ -4,6 +4,7 @@ Partner application deadlines for Platinum Education consultants, with:
 
 - a **Deadline alert** box for any deadline inside 30 days
 - upcoming deadlines and a deadline calendar by intake
+- an **Industry news** feed: every morning the server checks GOV.UK (DfE, Student Loans Company, HM Treasury) and legislation.gov.uk for new policies, laws and funding that affect students eligible for UK student finance. International/visa and school-only items are filtered out, and new items wait in the admin panel until you publish them
 - a password-protected **Admin panel** to add and edit partners, deadlines, campuses and logos
 
 No dependencies: plain Node.js (18+).
@@ -37,6 +38,7 @@ Any host that runs Node and keeps a writable disk works (Render with a disk, Fly
 
 - `server.js` – web server and API (`/api/board`, `/api/login`, `/api/partners/:id`, `/api/meta`, `/api/assets`)
 - `index.html` – the board and admin panel
+- `news.js` – the daily news scanner and its filtering rules (set `NEWS_SCAN=off` to switch it off)
 - `board.json` – starting partners and deadlines (only used on first start)
 - `assets.json` – partner logos and the Platinum logo, stored as text
 - `data/` – live data (created on first run, not committed)

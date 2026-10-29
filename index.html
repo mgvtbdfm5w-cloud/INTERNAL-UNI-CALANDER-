@@ -1,4 +1,40 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}/* Industry news (home students): board list + admin review queue */
+.news { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 20px; display: grid; gap: 14px }
+.news-head { display: flex; flex-wrap: wrap; gap: 10px 20px; align-items: flex-end; justify-content: space-between }
+.news-head h2 { font-size: 22px }
+.news-head p { margin: 2px 0 0; font-size: 13.5px; color: var(--muted); max-width: 60ch }
+.nchips { display: flex; gap: 6px; flex-wrap: wrap }
+.nchip { font: 600 13px var(--f-body); border: 1px solid var(--line); background: var(--bg); color: var(--muted); border-radius: 99px; padding: 5px 12px; cursor: pointer }
+.nchip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--bg) }
+.nlist { display: grid }
+.nitem { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 4px 16px; padding: 14px 0; border-top: 1px solid var(--line) }
+.nitem:first-child { border-top: 0; padding-top: 4px }
+.nitem .nd { font: 500 13px var(--f-mono); color: var(--muted); padding-top: 3px; font-variant-numeric: tabular-nums }
+.nitem .nb { display: grid; gap: 5px; min-width: 0 }
+.nitem .nt { font-weight: 600; font-size: 15.5px; line-height: 1.35; color: var(--ink); text-decoration: none; overflow-wrap: anywhere }
+.nitem .nt:hover { color: var(--accent); text-decoration: underline }
+.nitem .ns { font-size: 13.5px; color: var(--muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden }
+.nmeta { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; font-size: 12.5px; color: var(--muted) }
+.ncat { font: 600 11px var(--f-body); letter-spacing: .07em; text-transform: uppercase; padding: 2px 8px; border-radius: 4px }
+.ncat.c-Funding { background: var(--open-bg); color: var(--open) }
+.ncat.c-Law { background: var(--accent-soft); color: var(--accent) }
+.ncat.c-Policy { background: var(--soon-bg); color: var(--soon) }
+.nres { font: 600 11px var(--f-body); color: var(--ink); border: 1px solid var(--gold); border-radius: 4px; padding: 1px 7px }
+.nfoot { display: flex; flex-wrap: wrap; gap: 8px 16px; justify-content: space-between; align-items: center; font-size: 12.5px; color: var(--muted); border-top: 1px dashed var(--line); padding-top: 12px }
+@media (max-width: 640px) { .nitem { grid-template-columns: 1fr } .nitem .nd { padding-top: 0 } }
+.na { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px; display: grid; gap: 12px }
+.na-top { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; justify-content: space-between }
+.na-top h3 { font: 700 18px var(--f-display) }
+.na-top .msg { font-size: 13px; color: var(--muted) }
+.na-tabs { display: flex; gap: 6px; flex-wrap: wrap }
+.na-item { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px 14px; align-items: start; padding: 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg) }
+.na-item .nt { font-weight: 600; color: var(--ink); text-decoration: none; overflow-wrap: anywhere }
+.na-item .nt:hover { text-decoration: underline }
+.na-item .ns { font-size: 13px; color: var(--muted); margin-top: 4px }
+.na-acts { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; align-items: center }
+.na-acts select { font: 13px var(--f-body); color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 6px 8px }
+@media (max-width: 640px) { .na-item { grid-template-columns: 1fr } .na-acts { justify-content: flex-start } }
+</style>
 <title>Platinum Intake Board</title>
 <link rel="icon" href="platinum-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -363,6 +399,18 @@ details.opts[open] summary { margin-bottom: 10px }
     <div class="soon-list" id="soonList"><p class="empty">Loading deadlines…</p></div>
   </section>
 
+  <section class="news" id="newsBox" aria-labelledby="newsTitle">
+    <div class="news-head">
+      <div><div class="eyebrow">Home students · UK higher education</div><h2 id="newsTitle">Industry news</h2>
+        <p>New policies, laws and funding that affect students eligible for UK student finance. Found daily from official sources and checked by Platinum before it appears here.</p></div>
+      <div class="nchips" id="newsChips" role="group" aria-label="Filter news">
+        <button type="button" class="nchip" data-cat="" aria-pressed="true">All</button><button type="button" class="nchip" data-cat="Funding" aria-pressed="false">Funding</button><button type="button" class="nchip" data-cat="Law" aria-pressed="false">Law</button><button type="button" class="nchip" data-cat="Policy" aria-pressed="false">Policy</button>
+      </div>
+    </div>
+    <div class="nlist" id="newsList"><p class="empty">Loading news…</p></div>
+    <div class="nfoot"><span id="newsStamp"></span><button type="button" class="btn small" id="newsMore" hidden>Show all</button></div>
+  </section>
+
   <div class="controls">
     <h2 class="cal-title">Deadline calendar</h2>
     <div class="filters">
@@ -404,6 +452,7 @@ details.opts[open] summary { margin-bottom: 10px }
       <div class="ap-user"><span id="apName2">Admin</span><button type="button" class="btn small" id="apExit">Log out</button></div>
     </header>
     <div class="ap-stats" id="apStats"></div>
+    <section class="na" id="newsAdmin" aria-label="Industry news review"></section>
     <section class="ik-set" id="ikSet" aria-label="Intakes"></section>
     <main id="view-admin" class="admin"></main>
   </div>
@@ -944,7 +993,7 @@ details.opts[open] summary { margin-bottom: 10px }
   });
   function showGate(gate) {
     $("#apGate").hidden = !gate; $("#apWork").hidden = gate;
-    if (!gate) { renderAdmin(); renderStats(); renderIntakeSet(); } else { $("#apErr").textContent = ""; $("#apPass").value = ""; $("#apPass").focus(); }
+    if (!gate) { renderAdmin(); renderStats(); renderIntakeSet(); loadNews(); } else { $("#apErr").textContent = ""; $("#apPass").value = ""; $("#apPass").focus(); }
   }
   function openAdmin() {
     $("#adminPanel").hidden = false; document.body.classList.add("ap-open");
@@ -1027,9 +1076,76 @@ details.opts[open] summary { margin-bottom: 10px }
     delete: (id) => call("DELETE", "/api/assets/" + id)
   };
   function setAdmin(on) {
+    if (canManage !== on) setTimeout(loadNews, 0);
     canManage = on; assets = on ? apiAssets : null;
     $("#adminBtn").textContent = on ? "Admin panel" : "Admin login";
   }
+
+
+  // ---------- Industry news ----------
+  const news = { items: [], lastScan: null, lastResult: null, scanning: false, cat: "", showAll: false, tab: "pending" };
+  const fmtWhen = (iso) => iso ? new Date(iso).toLocaleString("en-GB", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }) : "not yet";
+  const safeUrl = (u) => /^https:\/\/(www\.)?(gov\.uk|legislation\.gov\.uk)\//.test(u || "") ? u : "#";
+  async function loadNews() {
+    try { Object.assign(news, await call("GET", "/api/news")); }
+    catch (e) { if (!news.items.length) $("#newsList").innerHTML = `<p class="empty">News didn't load. Refresh the page to try again.</p>`; return; }
+    renderNews(); if (adminOpen()) renderNewsAdmin();
+  }
+  function newsMeta(n) {
+    return `<span class="ncat c-${esc(n.category)}">${esc(n.category)}</span>${n.residency ? `<span class="nres">Residency / eligibility</span>` : ""}<span>${esc(n.nation)}</span><span>· ${esc(n.source)}</span>`;
+  }
+  function renderNews() {
+    const pub = news.items.filter(n => n.status === "approved" && (!news.cat || n.category === news.cat));
+    const shown = news.showAll ? pub : pub.slice(0, 6);
+    $("#newsList").innerHTML = shown.length ? shown.map(n => `<article class="nitem"><div class="nd">${n.date ? fmtDate(n.date) : ""}</div><div class="nb">
+        <a class="nt" href="${esc(safeUrl(n.url))}" target="_blank" rel="noopener">${esc(n.title)}</a>
+        ${n.summary ? `<div class="ns">${esc(n.summary)}</div>` : ""}<div class="nmeta">${newsMeta(n)}</div></div></article>`).join("")
+      : `<p class="empty">${news.cat ? "No " + esc(news.cat.toLowerCase()) + " news published yet." : "No news published yet. New items appear here once Platinum has checked them."}</p>`;
+    const more = $("#newsMore"); more.hidden = pub.length <= 6; more.textContent = news.showAll ? "Show fewer" : `Show all ${pub.length}`;
+    $("#newsStamp").textContent = "Sources: GOV.UK (DfE, Student Loans Company, HM Treasury) and legislation.gov.uk · last checked " + fmtWhen(news.lastScan);
+  }
+  $("#newsChips").addEventListener("click", e => { const b = e.target.closest("[data-cat]"); if (!b) return; news.cat = b.dataset.cat;
+    document.querySelectorAll("#newsChips .nchip").forEach(x => x.setAttribute("aria-pressed", String(x === b))); renderNews(); });
+  $("#newsMore").addEventListener("click", () => { news.showAll = !news.showAll; renderNews(); });
+
+  function renderNewsAdmin() {
+    const el = $("#newsAdmin"); if (!el || !canManage) return;
+    const by = (s) => news.items.filter(n => n.status === s);
+    const tabs = [["pending", "To review"], ["approved", "Published"], ["hidden", "Hidden"]];
+    const list = by(news.tab);
+    const r = news.lastResult;
+    el.innerHTML = `<div class="na-top"><div><h3>Industry news review</h3><span class="msg" id="naMsg">${news.scanning ? "Scanning…" : `Last scan ${fmtWhen(news.lastScan)}${r ? ` · ${r.added} new from ${r.checked} checked${r.errors && r.errors.length ? ` · ${r.errors.length} source${r.errors.length > 1 ? "s" : ""} didn't answer` : ""}` : ""}`}</span></div>
+        <button type="button" class="btn small primary" id="naScan"${news.scanning ? " disabled" : ""}>${news.scanning ? "Scanning…" : "Scan now"}</button></div>
+      <div class="na-tabs">${tabs.map(([k, l]) => `<button type="button" class="nchip" data-natab="${k}" aria-pressed="${news.tab === k}">${l} (${by(k).length})</button>`).join("")}</div>
+      ${list.length ? list.map(n => `<div class="na-item" data-nid="${esc(n.id)}"><div>
+          <div class="nmeta"><span class="mono">${n.date ? fmtDate(n.date) : ""}</span>${newsMeta(n)}</div>
+          <a class="nt" href="${esc(safeUrl(n.url))}" target="_blank" rel="noopener">${esc(n.title)}</a>${n.summary ? `<div class="ns">${esc(n.summary)}</div>` : ""}</div>
+        <div class="na-acts"><select data-nf="category" aria-label="Category">${["Funding", "Law", "Policy"].map(c => `<option${c === n.category ? " selected" : ""}>${c}</option>`).join("")}</select>
+          ${n.status !== "approved" ? `<button type="button" class="btn small primary" data-nact="approved">Publish</button>` : `<button type="button" class="btn small" data-nact="pending">Unpublish</button>`}
+          ${n.status !== "hidden" ? `<button type="button" class="btn small" data-nact="hidden">Hide</button>` : ""}</div></div>`).join("")
+        : `<p class="empty">${news.tab === "pending" ? "Nothing waiting for review. The scanner checks official sources every morning." : "Nothing here."}</p>`}`;
+  }
+  $("#newsAdmin").addEventListener("click", async e => {
+    const t = e.target.closest("button"); if (!t) return;
+    if (t.dataset.natab) { news.tab = t.dataset.natab; renderNewsAdmin(); return; }
+    if (t.id === "naScan") {
+      news.scanning = true; renderNewsAdmin();
+      try { await call("POST", "/api/news/scan"); } catch (x) { news.scanning = false; renderNewsAdmin(); $("#naMsg").textContent = "The scan didn't finish. Try again in a minute."; return; }
+      news.scanning = false; return loadNews();
+    }
+    const row = t.closest("[data-nid]");
+    if (row && t.dataset.nact) {
+      t.disabled = true;
+      try { await call("PUT", "/api/news/" + row.dataset.nid, { status: t.dataset.nact, category: row.querySelector('[data-nf="category"]').value }); }
+      catch (x) { t.disabled = false; $("#naMsg").textContent = "Couldn't save that. Try again."; return; }
+      loadNews();
+    }
+  });
+  $("#newsAdmin").addEventListener("change", async e => {
+    if (e.target.dataset.nf !== "category") return;
+    const row = e.target.closest("[data-nid]");
+    try { await call("PUT", "/api/news/" + row.dataset.nid, { category: e.target.value }); loadNews(); } catch (x) { $("#naMsg").textContent = "Couldn't save that. Try again."; }
+  });
 
   db = apiDb;
   db.doc("meta/board").onSnapshot(s => {
@@ -1046,10 +1162,12 @@ details.opts[open] summary { margin-bottom: 10px }
   (async () => {
     try { const r = await call("GET", "/api/session"); setAdmin(!!r.admin); } catch (e) {}
     await refresh();
+    loadNews();
     if (location.hash === "#admin" || location.hash === "#manage") openAdmin();
   })();
   // Keep consultants' screens current: re-check the board every minute and when the tab comes back
   setInterval(() => { if (!document.hidden && !admin.dirty) refresh(); }, 60000);
+  setInterval(() => { if (!document.hidden) loadNews(); }, 10 * 60000);
   document.addEventListener("visibilitychange", () => { if (!document.hidden && !admin.dirty) refresh(); });
 })();
 </script>
